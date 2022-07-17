@@ -12,15 +12,8 @@
     </bean>
 
     <bean id="ShipBean"
-          class="port.ship.Ship">
-    </bean>
-
-    <bean id="ShipBean1"
-          class="port.ship.Ship">
-    </bean>
-
-    <bean id="ShipBean2"
-          class="port.ship.Ship">
+          class="port.ship.Ship"
+          scope="prototype">
     </bean>
 
     <bean id="PortBean"
@@ -45,21 +38,10 @@
     </bean>
 
     <bean id="CraneBean"
-          class="port.Crane">
+          class="port.Crane"
+          scope="prototype">
         <constructor-arg ref="StoreBean"/>
         <constructor-arg ref="ShipBean"/>
-    </bean>
-
-    <bean id="CraneBean1"
-          class="port.Crane">
-        <constructor-arg ref="StoreBean"/>
-        <constructor-arg ref="ShipBean1"/>
-    </bean>
-
-    <bean id="CraneBean2"
-          class="port.Crane">
-        <constructor-arg ref="StoreBean"/>
-        <constructor-arg ref="ShipBean2"/>
     </bean>
 
 </beans>

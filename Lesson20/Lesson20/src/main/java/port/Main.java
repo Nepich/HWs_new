@@ -1,13 +1,13 @@
 package port;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import port.ship.Ship;
 import port.suppliers.BrickSupplier;
 import port.suppliers.SteelSupplier;
 import port.suppliers.WoodSupplier;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Main{
 
@@ -15,8 +15,8 @@ public class Main{
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
                 "applicationContext.xml");
         Ship ship = context.getBean("ShipBean", Ship.class);
-        Ship ship1 = context.getBean("ShipBean1", Ship.class);
-        Ship ship2 = context.getBean("ShipBean2", Ship.class);
+        Ship ship1 = context.getBean("ShipBean", Ship.class);
+        Ship ship2 = context.getBean("ShipBean", Ship.class);
         System.out.println(ship.getCargo().size() + " " + ship.getType());
         System.out.println(ship1.getCargo().size() + " " + ship1.getType());
         System.out.println(ship2.getCargo().size() + " " + ship2.getType());
@@ -30,8 +30,8 @@ public class Main{
 
         ExecutorService shipping = Executors.newFixedThreadPool(port.getCraneNum());
         shipping.submit(context.getBean("CraneBean", Crane.class));
-        shipping.submit(context.getBean("CraneBean1", Crane.class));
-        shipping.submit(context.getBean("CraneBean2", Crane.class));
+        shipping.submit(context.getBean("CraneBean", Crane.class));
+        shipping.submit(context.getBean("CraneBean", Crane.class));
         shipping.shutdown();
 
         context.close();
