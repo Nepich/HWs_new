@@ -165,6 +165,10 @@ if __name__ == '__main__':
 
         snake.update()
         if snake.collided:
+            with open("score.txt", "a", encoding="utf-8") as file:
+                name = input("Введите свое имя: ")
+                to_write = name + ' : ' + snake.score
+                file.write(to_write)
             break
 
 
